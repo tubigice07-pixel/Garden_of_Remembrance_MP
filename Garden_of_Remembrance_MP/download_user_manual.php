@@ -1,0 +1,643 @@
+<?php
+/**
+ * Garden of Remembrance Memorial Park CMIS
+ * User Manual Downloader (.doc format)
+ */
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+$isCli = (php_sapi_name() === 'cli');
+
+$docTitle = "Garden_of_Remembrance_CMIS_User_Manual.doc";
+
+if (!$isCli) {
+    header("Content-Type: application/vnd.ms-word; charset=UTF-8");
+    header("Content-Disposition: attachment; filename=\"" . $docTitle . "\"");
+    header("Cache-Control: private, max-age=0, must-revalidate");
+    header("Pragma: public");
+    echo "\xEF\xBB\xBF"; // UTF-8 BOM
+}
+
+ob_start();
+?>
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+      xmlns:w="urn:schemas-microsoft-com:office:word"
+      xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--[if gte mso 9]>
+<xml>
+  <w:WordDocument>
+    <w:View>Print</w:View>
+    <w:Zoom>100</w:Zoom>
+    <w:DoNotOptimizeForBrowser/>
+  </w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+  @page {
+    size: 8.5in 11in;
+    margin: 1.0in 1.0in 1.0in 1.0in;
+    mso-header-margin: 0.5in;
+    mso-footer-margin: 0.5in;
+    mso-paper-source: 0;
+  }
+  body {
+    font-family: Arial, 'Helvetica Neue', sans-serif;
+    font-size: 11pt;
+    line-height: 1.35;
+    color: #111111;
+  }
+  h1 {
+    font-size: 14pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 4pt;
+    color: #000000;
+  }
+  h2 {
+    font-size: 12pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 12pt;
+    color: #111111;
+  }
+  h3 {
+    font-size: 11pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 14pt;
+    margin-bottom: 2pt;
+    color: #000000;
+  }
+  p {
+    margin-top: 0;
+    margin-bottom: 8pt;
+    text-align: justify;
+  }
+  .divider {
+    border-bottom: 1.5pt solid #000000;
+    margin-top: 2pt;
+    margin-bottom: 10pt;
+    height: 1pt;
+  }
+  .subdivider {
+    border-bottom: 1pt solid #444444;
+    margin-top: 2pt;
+    margin-bottom: 8pt;
+    height: 1pt;
+  }
+  ul {
+    margin-top: 2pt;
+    margin-bottom: 8pt;
+    padding-left: 20pt;
+  }
+  li {
+    margin-bottom: 4pt;
+  }
+  .step {
+    font-weight: bold;
+    color: #000000;
+  }
+  .screenshot-box {
+    margin: 10pt 0 14pt 0;
+    padding: 10pt;
+    background-color: #f7f7f7;
+    border: 1pt dashed #777777;
+    font-size: 10pt;
+    font-style: italic;
+    color: #444444;
+    text-align: center;
+  }
+  table.manual-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8pt;
+    margin-bottom: 12pt;
+    font-size: 10pt;
+  }
+  table.manual-table th {
+    background-color: #e9ecef;
+    border: 1pt solid #333333;
+    padding: 6pt 8pt;
+    text-align: left;
+    font-weight: bold;
+  }
+  table.manual-table td {
+    border: 1pt solid #666666;
+    padding: 6pt 8pt;
+    vertical-align: top;
+  }
+  .part-header {
+    margin-top: 20pt;
+    margin-bottom: 6pt;
+    font-size: 13pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #000000;
+  }
+  .page-break {
+    page-break-before: always;
+    mso-break-type: page-break;
+  }
+</style>
+</head>
+<body>
+
+<h1>APPENDIX – USER MANUAL</h1>
+<h2>GARDEN OF REMEMBRANCE MEMORIAL PARK CEMETERY INFORMATION MANAGEMENT SYSTEM (CMIS)</h2>
+
+<p>This user manual provides step-by-step instructions for using the Garden of Remembrance Memorial Park Cemetery Information Management System (CMIS). The system automates memorial lot reservations, installment payment calculations, digital GCash transactions, interactive cemetery mapping with GPS grave location, deceased records management, ownership claims, and property transfer processing. It is designed for three types of users: Public Visitors / Guests, Registered Customers / Plot Owners, and Administrators.</p>
+
+<h3>1. SYSTEM REQUIREMENTS</h3>
+<div class="divider"></div>
+<p>The Garden of Remembrance Memorial Park CMIS is a responsive, web-based application. No software installation is required. To access and use the system, prepare the following:</p>
+<ul>
+  <li>Any device — desktop personal computer, laptop, tablet, or smartphone (Android or iOS)</li>
+  <li>An updated web browser: Google Chrome, Microsoft Edge, Mozilla Firefox, or Apple Safari</li>
+  <li>A stable internet connection for real-time map navigation, reservation validation, and payment proof submission</li>
+  <li>An active, valid email address and Philippine mobile number for account verification, transaction receipts, and system alerts</li>
+</ul>
+
+<h3>2. ACCESSING THE SYSTEM</h3>
+<div class="divider"></div>
+<p><span class="step">Step 1:</span> Open your web browser.</p>
+<p><span class="step">Step 2:</span> Type the Garden of Remembrance Memorial Park URL into the address bar (e.g., http://localhost/Garden_of_Remembrance_MP/ or the official domain name) and press Enter.</p>
+<p><span class="step">Step 3:</span> The Public Home Page will load. From here, you can browse memorial park information, search deceased burial locations, view available sections, or choose to Log In or Register.</p>
+<p>If the page does not load, verify your local server or internet connection and refresh the browser. Contact the cemetery administration office if the issue persists.</p>
+
+<div class="screenshot-box">[ Screenshot: Home Page / Public Landing Interface ]</div>
+
+<h3>3. CREATING A CUSTOMER ACCOUNT (SIGN UP)</h3>
+<div class="divider"></div>
+<p>Visitors who wish to reserve memorial plots, make payments, track installment balances, or claim prior ownership must create a customer account. Only clients can self-register. Administrative accounts are securely created and assigned by the system administrator.</p>
+
+<p><strong>Step 1: Personal Information</strong></p>
+<ul>
+  <li>On the navigation bar, click Register (or navigate to register.php).</li>
+  <li>Enter your First Name, Middle Name (optional), and Last Name.</li>
+  <li>Enter your active Philippine Mobile Number (e.g., 0917XXXXXXX or +639XXXXXXXXX).</li>
+  <li>Enter your Complete Residential Address.</li>
+  <li>Click Continue.</li>
+</ul>
+
+<p><strong>Step 2: Account Credentials &amp; Security</strong></p>
+<ul>
+  <li>Enter your Email Address. This email will serve as your unique login ID and receive system notifications, booking approvals, and payment receipts.</li>
+  <li>Create a strong Password. It must be at least 8 characters in length and include a combination of uppercase letters, lowercase letters, numbers, and special symbols.</li>
+  <li>Re-enter your password in the Confirm Password field to ensure accuracy.</li>
+  <li>Click the Create Account button.</li>
+</ul>
+
+<p><strong>Step 3: Email Verification</strong></p>
+<ul>
+  <li>An automated email containing a 6-digit verification code or activation link will be sent to your registered email address via PHPMailer.</li>
+  <li>Check your inbox (and Spam/Junk folder if not immediately visible).</li>
+  <li>Enter the 6-digit code on the Account Verification screen (verify.php) and click Verify Account.</li>
+  <li>Upon successful verification, your account is activated, and you will be redirected to the Login page.</li>
+</ul>
+
+<div class="screenshot-box">[ Screenshot: Customer Registration Page ]</div>
+<div class="screenshot-box">[ Screenshot: Email Verification Screen (verify.php) ]</div>
+
+<h3>4. LOGGING IN</h3>
+<div class="divider"></div>
+<p><span class="step">Step 1:</span> Click the Login button from the top navigation menu (login.php).</p>
+<p><span class="step">Step 2:</span> Enter your registered Email Address.</p>
+<p><span class="step">Step 3:</span> Enter your Password.</p>
+<p><span class="step">Step 4:</span> Click the Log In button.</p>
+<p><span class="step">Step 5:</span> The system authenticates your credentials and directs you to the appropriate interface:</p>
+<ul>
+  <li>Registered Customer / Plot Owner &rarr; Customer Dashboard (user_dashboard.php)</li>
+  <li>System Administrator &rarr; Admin Management Portal (dashboard.php)</li>
+</ul>
+
+<p><strong>If Login Fails:</strong></p>
+<ul>
+  <li>Double-check that your email address is spelled correctly without extra spaces.</li>
+  <li>Ensure the Caps Lock key is turned off before typing your password.</li>
+  <li>If your account has not yet been verified, click Resend Verification Code on the login page.</li>
+  <li>If you forgot your password, click Forgot Password?, enter your registered email address, and follow the password reset link sent to your inbox.</li>
+</ul>
+
+<div class="screenshot-box">[ Screenshot: Login Page (login.php) ]</div>
+
+<div class="page-break"></div>
+
+<div class="part-header">PART B – CUSTOMER / PLOT OWNER GUIDE</div>
+<div class="divider"></div>
+
+<h3>5. NAVIGATING THE CUSTOMER DASHBOARD</h3>
+<div class="subdivider"></div>
+<p>After logging in, customers are welcomed into the Customer Dashboard (user_dashboard.php). The top navigation bar and responsive mobile drawer provide quick access to all client features:</p>
+<ul>
+  <li><strong>Dashboard</strong> — Displays a summary of your active plot reservations, certified owned lots, recent payments, and quick action shortcuts.</li>
+  <li><strong>Booking</strong> — Launches the online plot reservation modal to select sections, view pricing, and reserve available memorial plots.</li>
+  <li><strong>Cemetery Map</strong> — Opens the high-resolution interactive cemetery map with real-time plot availability and GPS grave locator.</li>
+  <li><strong>Plot Transfer</strong> — Allows you to submit and track requests to transfer plot ownership to another person or family member.</li>
+  <li><strong>My Profile</strong> — Allows you to update your contact details, upload a profile picture, and update account security settings.</li>
+  <li><strong>Notification Bell</strong> — Alerts you in real-time when a reservation is approved, a payment is verified, or an installment deadline approaches.</li>
+  <li><strong>Logout</strong> — Safely ends your active session and returns to the home page.</li>
+</ul>
+
+<div class="screenshot-box">[ Screenshot: Customer Dashboard Overview ]</div>
+
+<h3>6. RESERVING AND BOOKING A MEMORIAL PLOT</h3>
+<div class="subdivider"></div>
+<p>Customers can browse, select, and reserve memorial plots online across Sections A through J.</p>
+<p><span class="step">Step 1:</span> Click Booking from the top navigation bar or click Book Reservation on your dashboard.</p>
+<p><span class="step">Step 2:</span> Choose your desired Cemetery Section (e.g., Section A - Standard Lawn, Section B - Memorial Gardens, Section C - Quiet Meadow, Section E - Corner &amp; Prime Lawn).</p>
+<p><span class="step">Step 3:</span> Select an available plot. The system displays plot details:</p>
+<ul>
+  <li>Lot Code and Number</li>
+  <li>Plot Classification (Standard Lawn, Premium Corner Plot, Garden Estate)</li>
+  <li>Current Status (Only Green / Available plots can be selected)</li>
+</ul>
+<p><span class="step">Step 4:</span> Choose your preferred Payment Option:</p>
+<ul>
+  <li><strong>Full Cash Payment</strong> — Settle the total plot price in full.</li>
+  <li><strong>Installment Plan</strong> — Select a flexible amortization schedule (12, 24, 36, 48, or 60 months).</li>
+</ul>
+<p><span class="step">Step 5:</span> The system displays the automated computation:</p>
+<ul>
+  <li>Total Lot Price</li>
+  <li>Required 20% Downpayment (e.g., &#8369;17,000 for Regular Lawn; &#8369;17,800 for Premium Lawn)</li>
+  <li>Monthly Amortization amount (for installment plans)</li>
+</ul>
+<p><span class="step">Step 6:</span> Optionally select an Interment Fee Package (Promo Package, Standard Package, or Senior Citizen / PWD discounted rate).</p>
+<p><span class="step">Step 7:</span> Review the reservation summary and click Proceed to Payment. Your plot is placed on temporary hold pending payment confirmation.</p>
+
+<div class="screenshot-box">[ Screenshot: Plot Reservation Modal &amp; Lot Selection ]</div>
+<div class="screenshot-box">[ Screenshot: Payment Plan &amp; Amortization Calculator ]</div>
+
+<h3>7. PAYMENT PROCESSING VIA GCASH &amp; PROOF SUBMISSION</h3>
+<div class="subdivider"></div>
+<p>The system provides a seamless payment process with integrated GCash QR code generation and payment verification.</p>
+<p><span class="step">Step 1:</span> On the Payment Checkout page (gcash_gateway.php), review the breakdown of charges (Plot Reservation Deposit or Monthly Installment).</p>
+<p><span class="step">Step 2:</span> The screen displays:</p>
+<ul>
+  <li>The official Garden of Remembrance Memorial Park Merchant Name</li>
+  <li>The official registered GCash Mobile Number</li>
+  <li>A dynamic, high-resolution GCash QR Code</li>
+</ul>
+<p><span class="step">Step 3:</span> Open your GCash application on your mobile phone:</p>
+<ul>
+  <li>Tap the QR button and scan the QR code displayed on your screen, OR</li>
+  <li>Use Send Money / Express Send to transfer the exact amount to the displayed cemetery GCash mobile number.</li>
+</ul>
+<p><span class="step">Step 4:</span> Confirm and complete the transaction in GCash. Save or take a clear screenshot of the GCash Transaction Confirmation Receipt. Take note of the GCash Reference Number (e.g., 100284759302).</p>
+<p><span class="step">Step 5:</span> On the CMIS Payment Confirmation form (upload_payment_proof.php):</p>
+<ul>
+  <li>Enter the GCash Reference Number.</li>
+  <li>Specify the exact Amount Paid.</li>
+  <li>Select the Payment Date.</li>
+  <li>Click Choose File and upload the screenshot image of your GCash receipt (JPG, PNG, or JPEG).</li>
+</ul>
+<p><span class="step">Step 6:</span> Click Submit Payment Proof. The status of your reservation changes to "Payment Under Verification".</p>
+
+<div class="screenshot-box">[ Screenshot: GCash Payment Gateway &amp; Scannable QR Code ]</div>
+<div class="screenshot-box">[ Screenshot: Payment Proof Upload Screen ]</div>
+
+<h3>8. VIEWING INVOICES AND PAYMENT SCHEDULES</h3>
+<div class="subdivider"></div>
+<p><span class="step">Step 1:</span> From your dashboard, locate the My Reservations or Payment Schedules section.</p>
+<p><span class="step">Step 2:</span> For confirmed payments, click the Print Invoice / View Receipt button.</p>
+<p><span class="step">Step 3:</span> A printable, official digital invoice (print_invoice.php) opens showing:</p>
+<ul>
+  <li>Official Invoice Number and Transaction Reference</li>
+  <li>Client Name, Contact Information, and Address</li>
+  <li>Plot Location details (Section, Block, Lot, Plot Number)</li>
+  <li>Payment Breakdown (Total Price, Downpayment, Balance Due, Monthly Amortization)</li>
+  <li>System QR Code for digital authentication</li>
+</ul>
+<p><span class="step">Step 4:</span> Click Print or Save as PDF for your personal legal records.</p>
+
+<div class="screenshot-box">[ Screenshot: Official Digital Invoice &amp; Receipt View ]</div>
+
+<h3>9. REQUESTING TO ADD ANOTHER DECEASED TO AN EXISTING GRAVE</h3>
+<div class="subdivider"></div>
+<p>Clients can request to add another deceased loved one to an existing family grave plot in accordance with cemetery policies.</p>
+<p><span class="step">Step 1:</span> From your dashboard or menu, select your existing grave plot.</p>
+<p><span class="step">Step 2:</span> Enter the details of the deceased person to be added:</p>
+<ul>
+  <li>Full Name of Deceased</li>
+  <li>Date of Birth and Date of Death</li>
+  <li>Relationship to the primary plot owner</li>
+</ul>
+<p><span class="step">Step 3:</span> Review the interment requirements and click Submit Request.</p>
+<p><span class="step">Step 4:</span> The cemetery Admin and Staff will review the plot capacity and request details. Once approved, the record will be updated in the system.</p>
+
+<div class="screenshot-box">[ Screenshot: Add Deceased to Existing Grave Form ]</div>
+
+<h3>10. REQUESTING THE TRANSFER OF REMAINS</h3>
+<div class="subdivider"></div>
+<p>Clients can submit a request to transfer the remains of a deceased loved one from their current plot to a new destination plot.</p>
+<p><span class="step">Step 1:</span> Click Transfer of Remains from the navigation menu (transfer_requests.php).</p>
+<p><span class="step">Step 2:</span> Click New Transfer Request.</p>
+<p><span class="step">Step 3:</span> Select the deceased record you wish to transfer.</p>
+<p><span class="step">Step 4:</span> The system automatically verifies if the required 8-to-10-year skeletal decomposition interval policy has been met since the original interment date.</p>
+<p><span class="step">Step 5:</span> Select the new destination Section and Plot.</p>
+<p><span class="step">Step 6:</span> Enter the reason for the transfer request.</p>
+<p><span class="step">Step 7:</span> Click Submit Transfer Request.</p>
+<p><span class="step">Step 8:</span> Track the status of your request (Pending, Approved, or Rejected) on the transfer requests tracking table.</p>
+
+<div class="screenshot-box">[ Screenshot: Transfer of Remains Request Form ]</div>
+
+<h3>11. USING THE INTERACTIVE CEMETERY MAP &amp; GRAVE LOCATOR</h3>
+<div class="subdivider"></div>
+<p><span class="step">Step 1:</span> Click Map from the top navigation bar (map.php).</p>
+<p><span class="step">Step 2:</span> Browsing the Cemetery Layout:</p>
+<ul>
+  <li>Use your mouse wheel or pinch-to-zoom on touch devices to zoom in and out.</li>
+  <li>Click and drag to pan across the entire memorial park.</li>
+  <li>Use the Section Filter dropdown to quickly jump to any section (Section A to J).</li>
+</ul>
+<p><span class="step">Step 3:</span> Searching for a Deceased Relative's Grave:</p>
+<ul>
+  <li>Type the first name or last name of the deceased in the Grave Search bar.</li>
+  <li>Select the person from the search suggestion list.</li>
+  <li>The map smoothly zooms in, centers, and highlights the exact grave plot.</li>
+  <li>A popup displays the deceased person's full name, date of birth, date of passing, interment date, and section location.</li>
+</ul>
+<p><span class="step">Step 4:</span> On mobile devices with GPS enabled, tap Get Directions to view walking paths and distance from your current location to the grave.</p>
+
+<div class="screenshot-box">[ Screenshot: Interactive Cemetery Map with Grave Locator ]</div>
+<div class="screenshot-box">[ Screenshot: Plot Information Popup Window ]</div>
+
+<h3>12. UPDATING YOUR PROFILE</h3>
+<div class="subdivider"></div>
+<p><span class="step">Step 1:</span> Click My Profile from the navigation menu (profile.php).</p>
+<p><span class="step">Step 2:</span> Update your personal details:</p>
+<ul>
+  <li>First Name, Middle Name, Last Name</li>
+  <li>Mobile Number and Complete Residential Address</li>
+  <li>Profile Picture — Click Choose File to upload a square JPG or PNG photo</li>
+</ul>
+<p><span class="step">Step 3:</span> To change your password:</p>
+<ul>
+  <li>Enter your Current Password</li>
+  <li>Enter your New Password (following security guidelines)</li>
+  <li>Confirm your New Password</li>
+</ul>
+<p><span class="step">Step 4:</span> Click Save Changes. A green confirmation banner will appear upon updating.</p>
+
+<div class="screenshot-box">[ Screenshot: Customer Profile Management Page ]</div>
+
+<div class="page-break"></div>
+
+<div class="part-header">PART C – ADMINISTRATOR GUIDE</div>
+<div class="divider"></div>
+
+<h3>13. NAVIGATING THE ADMINISTRATOR DASHBOARD</h3>
+<div class="subdivider"></div>
+<p>The System Administrator has complete oversight over cemetery operations, records, and financial transactions. Logging in with an administrator account opens the central Admin Dashboard (dashboard.php).</p>
+<p>The navigation bar and sidebar drawer provide access to:</p>
+<ul>
+  <li><strong>Dashboard</strong> — Real-time analytics, inventory metrics, pending action counts, and quick management links.</li>
+  <li><strong>Booking</strong> — Review, approve, reject, or manually record plot reservations and cash walk-ins.</li>
+  <li><strong>Map</strong> — Full cemetery layout management, plot status modification, and GPS calibration.</li>
+  <li><strong>Logs</strong> — Complete immutable system audit trail tracking all actions, logins, and database alterations.</li>
+  <li><strong>Sales / Reports</strong> — Financial collection summaries, amortization tracking, and exportable revenue reports.</li>
+  <li><strong>Transfers</strong> — Review, authenticate, and approve plot ownership transfer submissions.</li>
+  <li><strong>Claims Review</strong> — Verify proof of purchase documents and approve plot ownership claims.</li>
+  <li><strong>Guest Requests</strong> — Process reservation inquiries submitted by public visitors.</li>
+  <li><strong>Profile</strong> — Admin account management and password security.</li>
+  <li><strong>About / Settings</strong> — System information, mail server configuration, and cemetery announcements.</li>
+</ul>
+
+<div class="screenshot-box">[ Screenshot: Administrator Dashboard &amp; KPI Summary Cards ]</div>
+
+<h3>14. MANAGING BOOKINGS &amp; RESERVATIONS</h3>
+<div class="subdivider"></div>
+<p><span class="step">Step 1:</span> Click Booking from the top navigation bar or go to dashboard.php?open=booking.</p>
+<p><span class="step">Step 2:</span> The reservations management table displays all client bookings with status badges (Pending, Confirmed, Cancelled, Completed).</p>
+<p><span class="step">Step 3:</span> To review a pending reservation:</p>
+<ul>
+  <li>Click the View Details / Action button on the reservation row.</li>
+  <li>Inspect the customer information, selected plot, payment terms, and uploaded GCash payment proof.</li>
+  <li>Cross-reference the GCash Reference Number and amount with your merchant account statement.</li>
+</ul>
+<p><span class="step">Step 4:</span> To confirm the booking:</p>
+<ul>
+  <li>Click Approve / Confirm Booking.</li>
+  <li>The system automatically marks the plot status as "Reserved" in the database.</li>
+  <li>An automated confirmation email and digital invoice notification are sent to the client.</li>
+</ul>
+<p><span class="step">Step 5:</span> To reject an invalid booking:</p>
+<ul>
+  <li>Click Reject Booking.</li>
+  <li>Enter a clear reason (e.g., "Invalid GCash reference number", "Unclear payment screenshot").</li>
+  <li>The reservation is cancelled, and the plot is immediately restored to "Available" status.</li>
+</ul>
+
+<div class="screenshot-box">[ Screenshot: Admin Booking Management Table ]</div>
+<div class="screenshot-box">[ Screenshot: Reviewing Payment Proof Modal ]</div>
+
+<h3>15. HANDLING GUEST RESERVATION REQUESTS</h3>
+<div class="subdivider"></div>
+<p><span class="step">Step 1:</span> Click Guest Requests in the top navigation bar (guest_reservations.php).</p>
+<p><span class="step">Step 2:</span> The table lists all plot reservation inquiries submitted by unauthenticated website visitors.</p>
+<p><span class="step">Step 3:</span> Review the guest's contact number, email address, chosen section/plot, and memorial preferences.</p>
+<p><span class="step">Step 4:</span> Available Actions:</p>
+<ul>
+  <li><strong>Contact Guest</strong> — Reach out via phone or email to assist with memorial arrangements.</li>
+  <li><strong>Convert to Booking</strong> — Create an official booking record once payment or valid identification has been secured.</li>
+  <li><strong>Mark as Completed / Archive</strong> — Keep the active inquiries list organized.</li>
+</ul>
+
+<div class="screenshot-box">[ Screenshot: Guest Reservation Requests Table ]</div>
+
+<h3>16. CEMETERY MAP AND PLOT MANAGEMENT</h3>
+<div class="subdivider"></div>
+<p><span class="step">Step 1:</span> Click Map (map.php) from the navigation bar.</p>
+<p><span class="step">Step 2:</span> Managing Plot Details:</p>
+<ul>
+  <li>Click any plot on the interactive map grid.</li>
+  <li>View or edit the plot status (Available, Reserved, Occupied, Maintenance).</li>
+  <li>Designate special plot characteristics (Regular Lawn, Corner Premium Plot, Estate).</li>
+  <li>Click Update Plot to apply changes in real time.</li>
+</ul>
+<p><span class="step">Step 3:</span> Review Section Availability:</p>
+<ul>
+  <li>Use the section filter to inspect plot layout and vacancies across operational sections (Sections A to F).</li>
+</ul>
+
+<div class="screenshot-box">[ Screenshot: Plot Editor Modal on Map ]</div>
+<div class="screenshot-box">[ Screenshot: Cemetery Map Management View ]</div>
+
+<h3>17. MANAGING DECEASED RECORDS &amp; INTERMENT</h3>
+<div class="subdivider"></div>
+<p><span class="step">Step 1:</span> Click Add Deceased from the dashboard or select an occupied plot on the map (add_deceased.php).</p>
+<p><span class="step">Step 2:</span> Complete the Deceased Record form:</p>
+<ul>
+  <li>Full Name of Deceased (First, Middle, Last)</li>
+  <li>Date of Birth and Date of Death</li>
+  <li>Date and Time of Interment / Burial Ceremony</li>
+  <li>Exact Plot Location (Section, Block, Lot, Plot Number)</li>
+  <li>Next of Kin / Contact Person Name and Phone Number</li>
+  <li>Epitaph or Memorial Remarks</li>
+</ul>
+<p><span class="step">Step 3:</span> Click Save Deceased Record.</p>
+<p><span class="step">Step 4:</span> The plot status automatically updates to "Occupied" (maroon/red marker), and the burial record is published to the public grave search directory.</p>
+
+<div class="screenshot-box">[ Screenshot: Add Deceased / Interment Form ]</div>
+
+<h3>18. MANAGING MULTI-INTERMENT &amp; CEMETERY SERVICES</h3>
+<div class="subdivider"></div>
+<p><span class="step">Step 1:</span> Admin and Staff can view incoming client requests to add a deceased loved one to an existing grave.</p>
+<p><span class="step">Step 2:</span> Inspect the existing plot record to verify plot occupancy capacity.</p>
+<p><span class="step">Step 3:</span> Check the deceased details (Name, Date of Passing, and relationship).</p>
+<p><span class="step">Step 4:</span> Click Approve to register the additional deceased person to the plot, or Reject if the plot has reached maximum capacity.</p>
+
+<div class="screenshot-box">[ Screenshot: Multi-Interment Review Interface ]</div>
+
+<h3>19. REVIEWING TRANSFER OF REMAINS REQUESTS</h3>
+<div class="subdivider"></div>
+<p><span class="step">Step 1:</span> Click Transfer of Remains from the navigation bar (transfer_requests.php).</p>
+<p><span class="step">Step 2:</span> Review incoming transfer requests submitted by clients.</p>
+<p><span class="step">Step 3:</span> Inspect the request details:</p>
+<ul>
+  <li>Current plot location and proposed destination plot.</li>
+  <li>Verification that the 8-to-10-year skeletal decomposition interval has elapsed since the original burial date.</li>
+  <li>Stated reason for the transfer.</li>
+</ul>
+<p><span class="step">Step 4:</span> Click Approve Transfer:</p>
+<ul>
+  <li>The system automatically updates the deceased record to the new plot location.</li>
+  <li>The destination plot status is set to Occupied.</li>
+  <li>If the previous plot is now vacant, its status updates to Available.</li>
+  <li>An automated email notification is sent to the client.</li>
+</ul>
+
+<div class="screenshot-box">[ Screenshot: Transfer Requests Review Table ]</div>
+
+<h3>20. SALES TRACKING &amp; FINANCIAL REPORTS</h3>
+<div class="subdivider"></div>
+<p><span class="step">Step 1:</span> Click Sales / Reports from the top navigation bar (sales_reports.php).</p>
+<p><span class="step">Step 2:</span> The financial dashboard presents:</p>
+<ul>
+  <li>Gross Sales Revenue and Total Downpayments Collected</li>
+  <li>Monthly Amortization Collections Breakdown</li>
+  <li>Outstanding Receivables / Unpaid Balances</li>
+</ul>
+<p><span class="step">Step 3:</span> Filtering Reports:</p>
+<ul>
+  <li>Filter by Date Range (Today, This Month, This Quarter, Custom Dates).</li>
+  <li>Filter by Section (Sections A to J) or Payment Method (GCash, Cash Walk-in).</li>
+</ul>
+<p><span class="step">Step 4:</span> Click Export to CSV / Excel or Print Report to generate formal accounting and audit documentation.</p>
+
+<div class="screenshot-box">[ Screenshot: Sales &amp; Financial Reports Dashboard ]</div>
+
+<h3>21. AUDIT LOGS &amp; SYSTEM SETTINGS</h3>
+<div class="subdivider"></div>
+<ul>
+  <li><strong>Activity Logs (logs.php):</strong> View an immutable record of every user action. Each entry captures Timestamp, User Name, Role, IP Address, Action Type (e.g., Booking Approved, Plot Edited, User Logged In), and Description. Use the search bar to filter by date or username.</li>
+  <li><strong>System Announcements (admin_announcement_modal.php):</strong> Publish public alerts regarding visiting hours, All Saints' Day guidelines, or office holiday closures.</li>
+  <li><strong>Mail Settings (admin_mail_settings.php):</strong> Configure SMTP server settings, port, encryption (TLS/SSL), and sender email credentials to ensure smooth delivery of verification codes and payment receipts.</li>
+</ul>
+
+<div class="screenshot-box">[ Screenshot: System Audit Activity Logs (logs.php) ]</div>
+
+<div class="page-break"></div>
+
+<h3>22. PRE-LAUNCH READINESS CHECKLIST</h3>
+<div class="divider"></div>
+<p>Before opening the portal for public reservations and client use, the administrator should verify:</p>
+<ul>
+  <li>Database connection is active and configured correctly in connection.php</li>
+  <li>Official pricing config in config/pricing_policy.php matches current park lot rates</li>
+  <li>GCash account name and mobile number in config/payment_settings.php are up to date</li>
+  <li>SMTP email credentials in admin_mail_settings.php are tested and sending emails reliably</li>
+  <li>All 10 cemetery sections (A to J) and plot coordinates are calibrated on the map</li>
+  <li>A test customer account has been registered, verified, and used to perform a test reservation flow</li>
+</ul>
+
+<p><strong>Confirm the complete customer transaction flow works:</strong></p>
+<p style="text-align: center; font-weight: bold; background-color: #f1f3f5; padding: 8pt; border: 1pt solid #ced4da;">
+  Register &rarr; Verify Email &rarr; Login &rarr; Select Plot &rarr; Pay via GCash &rarr; Upload Proof &rarr; Admin Approves &rarr; View Invoice
+</p>
+<p>If this complete flow executes without errors, the system is fully operational and ready for live production use.</p>
+
+<h3>23. TROUBLESHOOTING</h3>
+<div class="divider"></div>
+<table class="manual-table">
+  <thead>
+    <tr>
+      <th style="width: 35%;">Problem</th>
+      <th style="width: 65%;">What to Do</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Cannot log in</strong></td>
+      <td>Verify your email and password spelling. Make sure Caps Lock is off. If your account is unverified, use the resend verification link.</td>
+    </tr>
+    <tr>
+      <td><strong>Did not receive verification email</strong></td>
+      <td>Check your Spam or Junk mail folder. Confirm you entered your email correctly during registration. You can request a new code at resend_verification.php.</td>
+    </tr>
+    <tr>
+      <td><strong>GCash payment proof upload fails</strong></td>
+      <td>Ensure your receipt image is in JPG, JPEG, or PNG format and the file size does not exceed 5MB.</td>
+    </tr>
+    <tr>
+      <td><strong>Reservation status remains "Pending"</strong></td>
+      <td>Payments are reviewed by cemetery administration during business hours. Please allow 1 to 4 hours for review, or contact the office with your GCash reference number.</td>
+    </tr>
+    <tr>
+      <td><strong>Grave not appearing in cemetery map search</strong></td>
+      <td>Ensure the deceased's name is spelled correctly. If the interment occurred recently, verify with the administrator that the deceased record has been saved.</td>
+    </tr>
+    <tr>
+      <td><strong>Transfer of remains request rejected</strong></td>
+      <td>Verify that the required 8-to-10-year skeletal decomposition interval policy has been met and destination plot is available.</td>
+    </tr>
+    <tr>
+      <td><strong>Map tiles or plot markers not loading</strong></td>
+      <td>Check your internet connection and refresh the browser. Ensure JavaScript is enabled in your browser settings.</td>
+    </tr>
+    <tr>
+      <td><strong>Forgot account password</strong></td>
+      <td>Click "Forgot Password?" on the login page, enter your registered email address, and follow the password reset link sent to your email.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>24. SECURITY AND PRIVACY</h3>
+<div class="divider"></div>
+<p>All users of the Garden of Remembrance Memorial Park CMIS must observe the following privacy and security guidelines:</p>
+<ul>
+  <li>Keep your account credentials strictly confidential. Never share your password or email verification codes.</li>
+  <li>Client information and payment receipts are stored securely and accessible solely by authorized cemetery personnel for verification purposes.</li>
+  <li>Administrators must not share administrative credentials or disclose client financial records without authorization.</li>
+  <li>Always click the Logout button when finishing your session, particularly when accessing the system on shared or public computers.</li>
+</ul>
+
+<h3>25. LOGGING OUT</h3>
+<div class="divider"></div>
+<p>To exit the system securely:</p>
+<p><span class="step">Step 1:</span> Click the Logout link located in the top navigation bar or mobile menu drawer.</p>
+<p><span class="step">Step 2:</span> The system will terminate your active session and redirect you safely to the Public Home Page or Login screen.</p>
+<p><span class="step">Step 3:</span> Close your web browser tab.</p>
+<p><em>Do not simply close your browser window without logging out first, especially on shared or public devices. Always click Logout to safeguard your personal account and plot records.</em></p>
+
+<div class="screenshot-box">[ Screenshot: Logout / Session Ended Confirmation ]</div>
+
+</body>
+</html>
+<?php
+$htmlContent = ob_get_clean();
+
+if ($isCli) {
+    $outPath = __DIR__ . '/' . $docTitle;
+    file_put_contents($outPath, "\xEF\xBB\xBF" . $htmlContent);
+    echo "Saved to: " . $outPath . "\n";
+} else {
+    echo $htmlContent;
+    exit;
+}

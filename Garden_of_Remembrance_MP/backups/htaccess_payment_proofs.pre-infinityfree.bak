@@ -1,0 +1,16 @@
+# Only allow image files
+<FilesMatch "(?<!\.(?:jpg|jpeg|png|gif|webp))$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Set proper MIME types
+AddType image/jpeg .jpg
+AddType image/jpeg .jpeg
+AddType image/png .png
+AddType image/gif .gif
+AddType image/webp .webp
+
+# Disable PHP execution
+php_flag engine off
+AddType text/plain .php .php3 .php4 .php5 .php6 .php7 .phps .phtml .pht .phar

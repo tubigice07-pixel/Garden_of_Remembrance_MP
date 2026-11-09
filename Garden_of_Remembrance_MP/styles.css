@@ -1,0 +1,68 @@
+/* styles.css - checkout & receipt styles (mobile-first) */
+:root{
+  --bg:#f6f8ff;
+  --card:#ffffff;
+  --primary:#0a6cff;
+  --muted:#6b7280;
+  --success:#16a34a;
+  --accent:#0a6cff;
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;background:var(--bg);color:#0f172a;-webkit-font-smoothing:antialiased}
+.container{max-width:760px;margin:16px auto;padding:12px}
+.header{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+.logo{width:56px;height:56px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(180deg,#EAF3FF 0%,#DFF0FF 100%);box-shadow:0 8px 22px rgba(10,108,255,0.08);overflow:hidden;padding:6px}
+.logo svg{width:36px;height:36px}
+.title h1{margin:0;font-size:16px;color:var(--primary)}
+.title p{margin:0;font-size:13px;color:var(--muted)}
+.card{background:var(--card);border-radius:var(--radius);padding:14px;box-shadow:0 8px 30px rgba(2,6,23,0.06)}
+.merchant-grid{display:flex;flex-direction:column;gap:12px}
+.qr-area{display:flex;flex-direction:column;align-items:center;gap:12px;padding:10px}
+#qrcode{width:min(220px,70vw);height:auto}
+#qrcode img, #qrcode canvas { max-width:100%; width:100%; height:auto; display:block }
+.btn-pay{background:var(--primary);color:white;border:none;padding:12px 16px;border-radius:10px;font-weight:600;font-size:15px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 10px 30px rgba(10,108,255,0.12)}
+.btn-pay:disabled{opacity:.6;cursor:not-allowed}
+.info-area{padding:6px 4px}
+.merchant-name{margin:0;font-size:18px}
+.muted{color:var(--muted);font-size:13px;margin:0}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.info-card{background:#fbfdff;border-radius:10px;padding:10px;border:1px solid rgba(15,23,42,0.03)}
+.info-card small{display:block;color:var(--muted);font-size:12px}
+.info-card .value{font-weight:700;margin-top:6px}
+.amount{font-size:20px;color:var(--primary)}
+.status-badge{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:700;font-size:13px}
+.status-pending{background:#fff7ed;color:#92400e}
+.status-paid{background:rgba(16,185,129,0.12);color:var(--success)}
+.status-expired{background:rgba(252,165,165,0.12);color:#ef4444}
+.small-muted{font-size:13px;color:var(--muted)}
+.note{margin-top:12px;font-size:13px;color:var(--muted);text-align:center}
+
+/* RECEIPT specific */
+.receipt-bg{min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:28px;background:linear-gradient(180deg,#0a6cff 0%, #0f4efc 100%)}
+.receipt-card{width:100%;max-width:420px;background:white;border-radius:18px;padding:18px;box-shadow:0 14px 40px rgba(2,6,23,0.18)}
+.receipt-top{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:6px}
+.check-circle{width:72px;height:72px;border-radius:999px;background:linear-gradient(180deg,#eaf6ff,#e3f0ff);display:grid;place-items:center}
+.check-circle svg{width:40px;height:40px;fill:var(--primary)}
+.receipt-title{font-weight:700;font-size:18px;color:#0f172a}
+.receipt-sub{color:var(--muted);font-size:13px}
+.receipt-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(15,23,42,0.04)}
+.receipt-row:last-child{border-bottom:none}
+.receipt-amount{font-size:22px;color:var(--primary);font-weight:800}
+.meta{font-size:13px;color:var(--muted)}
+.actions{display:flex;gap:10px;justify-content:center;margin-top:14px}
+.btn-outline{background:white;border:1px solid rgba(15,23,42,0.06);padding:10px 12px;border-radius:10px;cursor:pointer}
+.btn-primary{background:var(--primary);color:white;padding:10px 12px;border-radius:10px;border:none;cursor:pointer}
+.gcash-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(6,11,46,0.45);z-index:9999}
+.gcash-modal-panel{background:transparent;border-radius:10px;padding:28px;display:flex;flex-direction:column;align-items:center;gap:14px;color:white}
+.gcash-spinner .ring{width:84px;height:84px;border-radius:50%;border:6px solid rgba(255,255,255,0.12);border-top-color:#ffffff;animation:spin 1s linear infinite;box-shadow:0 8px 24px rgba(11,60,138,0.14);}
+.gcash-messages .gcash-message{font-size:18px;font-weight:600;text-align:center}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(min-width:720px){.merchant-grid{flex-direction:row}.qr-area{flex:0 0 280px}.info-area{flex:1}}
+
+/* small print */
+.footer-note{text-align:center;color:var(--muted);font-size:12px;margin-top:10px}
+
+/* Reusable logo image */
+.logo-img{max-height:36px;width:auto;max-width:100%;display:block;object-fit:contain}

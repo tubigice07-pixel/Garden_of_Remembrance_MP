@@ -1,0 +1,17 @@
+# Garden of Remembrance - Clean Apache Config
+RewriteEngine On
+
+# Internal 404 fallback
+ErrorDocument 404 /index.php
+
+# Route aboutus.html to aboutus.php to preserve navigation header
+RewriteRule ^aboutus\.html$ aboutus.php [NC,L,QSA]
+
+# Safe dual routing for popup.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/popup.php -f
+RewriteRule ^[sS]ections/popup\.php$ popup.php [NC,L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/sections/popup.php -f
+RewriteRule ^popup\.php$ sections/popup.php [NC,L,QSA]

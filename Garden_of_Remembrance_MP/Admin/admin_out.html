@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales & Reports</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand: #7b1113;
+            --brand-dark: #610d10;
+            --brand-soft: #f8ecec;
+            --accent: #a03a3c;
+            --bg: #f3f4f6;
+            --panel: #ffffff;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --border: #e5e7eb;
+            --shadow: 0 12px 28px rgba(17, 24, 39, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: var(--text);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .main-container {
+            position: relative;
+            min-height: 100vh;
+            padding-top: 112px;
+        }
+
+        .sales-topbar {
+            position: fixed;
+            top: 18px;
+            left: 0;
+            right: 0;
+            z-index: 1040;
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            pointer-events: none;
+        }
+
+        .sales-brand,
+        .sales-nav {
+            pointer-events: auto;
+        }
+
+        .sales-brand {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 170px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(123, 17, 19, 0.08);
+            border-radius: 18px;
+            box-shadow: 0 8px 20px rgba(17, 24, 39, 0.08);
+            padding: 10px 16px;
+            height: 66px;
+        }
+
+        .sales-brand img {
+            display: block;
+            width: auto;
+            max-width: 220px;
+            height: 54px;
+            object-fit: contain;
+        }
+
+        .sales-nav {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(123, 17, 19, 0.08);
+            border-radius: 999px;
+            box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+            padding: 8px 12px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 6px;
+        }
+
+        .topnav-link {
+            color: var(--brand);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.82rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            position: relative;
+            padding: 10px 16px;
+            border-radius: 999px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .topnav-link:hover {
+            color: var(--accent);
+            background: rgba(160, 58, 60, 0.08);
+        }
+
+        .topnav-link.active {
+            color: var(--accent);
+            background: rgba(160, 58, 60, 0.08);
+            box-shadow: inset 0 0 0 1px rgba(160, 58, 60, 0.08);
+        }
+
+        .topnav-link.text-danger {
+            color: #d93025;
+        }
+
+        .topnav-link.text-danger:hover {
+            background: rgba(217, 48, 37, 0.08);
+        }
+
+        .content-wrapper {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 3rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-top: 0.5rem;
+        }
+
+        .page-header h1 {
+            color: var(--brand);
+            margin: 0 0 0.5rem;
+            font-size: clamp(2rem, 3vw, 2.8rem);
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+            font-weight: 800;
+        }
+
+        .page-header p {
+            margin: 0;
+            color: var(--accent);
+            font-size: 1rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .controls-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .month-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 0.85rem 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .month-selector label {
+            font-weight: 600;
+            color: var(--text);
+            white-space: nowrap;
+        }
+
+        .month-selector input {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: #fff;
+            padding: 0.65rem 0.8rem;
+            font-size: 0.95rem;
+            color: var(--text);
+            min-width: 180px;
+        }
+
+        .month-selector .btn {
+            border-radius: 10px;
+            min-width: 100px;
+            font-weight: 700;
+        }
+
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .card-primary {
+            background: var(--panel);
+            border: 1px solid rgba(15, 23, 42, 0.04);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            padding: 1.35rem 1.25rem;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--muted);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-value {
+            font-size: clamp(1.5rem, 2vw, 2.2rem);
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--brand);
+            word-break: break-word;
+        }
+
+        .transactions-section {
+            background: var(--panel);
+            border: 1px solid rgba(15, 23, 42, 0.04);
+            border-radius: 22px;
+            box-shadow: var(--shadow);
+            padding: 1.35rem;
+            overflow: hidden;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.1rem;
+            flex-wrap: wrap;
+        }
+
+        .section-header h3 {
+            margin: 0;
+            color: var(--brand);
+            font-weight: 800;
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+        }
+
+        .entry-badge {
+            background: var(--brand-soft);
+            color: var(--brand);
+            border: 1px solid rgba(123, 17, 19, 0.12);
+            border-radius: 999px;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+        }
+
+        .transactions-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 860px;
+            background: #fff;
+        }
+
+        .transactions-table thead {
+            background: #f9fafb;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .transactions-table th {
+            padding: 0.9rem 1rem;
+            text-align: left;
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .transactions-table td {
+            padding: 0.9rem 1rem;
+            border-bottom: 1px solid #edf1f5;
+            color: var(--text);
+            vertical-align: middle;
+        }
+
+        .transactions-table tbody tr {
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .transactions-table tbody tr:hover {
+            background-color: rgba(123, 17, 19, 0.02);
+        }
+
+        .booking-id {
+            font-weight: 800;
+            color: var(--brand);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.45rem 0.7rem;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .status-paid {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .status-partial {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-pending {
+            background-color: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .status-unpaid {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .status-cancelled {
+            background-color: #f3f4f6;
+            color: #374151;
+        }
+
+        .empty-state {
+            padding: 3rem 1rem;
+            text-align: center;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .empty-state-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .modal-content {
+            background: #fff;
+            color: #111827;
+            border: none;
+            border-radius: 1.25rem;
+            box-shadow: 0 20px 45px rgba(17, 24, 39, 0.18);
+            overflow: hidden;
+        }
+
+        .modal-header {
+            background: var(--brand);
+            border-bottom: none;
+            color: #fff;
+            padding: 1rem 1.25rem;
+        }
+
+        .modal-header .btn-close {
+            filter: invert(1);
+            opacity: 1;
+        }
+
+        .detail-row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.25rem 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .detail-label {
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+        }
+
+        .detail-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        @media (max-width: 1024px) {
+            .sales-topbar {
+                padding: 0 20px;
+            }
+
+            .sales-brand {
+                min-width: 140px;
+            }
+
+            .sales-brand img {
+                height: 48px;
+            }
+
+            .topnav-link {
+                font-size: 0.74rem;
+                padding: 8px 12px;
+            }
+        }
+
+        @media (max-width: 840px) {
+            .main-container {
+                padding-top: 150px;
+            }
+
+            .sales-topbar {
+                display: block;
+                padding: 0 12px;
+            }
+
+            .sales-brand {
+                margin-bottom: 0.75rem;
+                width: fit-content;
+            }
+
+            .sales-nav {
+                justify-content: center;
+                overflow-x: auto;
+                scrollbar-width: thin;
+                -ms-overflow-style: auto;
+            }
+
+            .content-wrapper {
+                padding: 1.25rem 1rem 2rem;
+            }
+
+            .summary-cards {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .main-container {
+                padding-top: 142px;
+            }
+
+            .sales-topbar {
+                top: 10px;
+            }
+
+            .sales-brand {
+                height: 54px;
+                padding: 8px 12px;
+            }
+
+            .sales-brand img {
+                max-width: 150px;
+                height: 40px;
+            }
+
+            .month-selector {
+                width: 100%;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .month-selector input {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .summary-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .transactions-section {
+                padding: 1rem;
+            }
+
+            .detail-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="sales-topbar">
+            <a href="dashboard.php" class="sales-brand" aria-label="Go to admin dashboard">
+                <img src="cmis_logo.png" alt="Garden of Remembrance Logo">
+            </a>
+
+            <nav class="sales-nav" aria-label="Main navigation">
+                <a href="#" class="topnav-link" data-bs-toggle="modal" data-bs-target="#bookingModal">BOOKING</a>
+                <a href="map.php" class="topnav-link">MAP</a>
+                <a href="logs.php" class="topnav-link">LOGS</a>
+                <a href="sales_reports.php" class="topnav-link active">SALES / REPORTS</a>
+                <a href="aboutus.html" class="topnav-link">ABOUT</a>
+                <a href="logout.php" class="topnav-link text-danger">LOGOUT</a>
+            </nav>
+        </div>
+
+        <!-- Page Content -->
+        <div class="content-wrapper">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>Sales & Reports</h1>
+                <p>Garden of Remembrance Memorial Park</p>
+            </div>
+
+            <!-- Controls Section -->
+            <div class="controls-section">
+                <div class="month-selector">
+                    <label for="sales_month">Month</label>
+                    <input type="month" id="sales_month" class="form-control form-control-sm" value="2026-08" style="max-width: 200px;">
+                    <button type="button" class="btn btn-primary btn-sm" onclick="updateReports()">Apply</button>
+                </div>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="summary-cards">
+                <div class="card-primary">
+                    <div class="card-label">Overall Revenue</div>
+                    <div class="card-value">₱0.00</div>
+                </div>
+                <div class="card-primary">
+                    <div class="card-label">August 2026 Sales</div>
+                    <div class="card-value">₱0.00</div>
+                </div>
+                <div class="card-primary">
+                    <div class="card-label">Total Bookings</div>
+                    <div class="card-value">5</div>
+                </div>
+                <div class="card-primary">
+                    <div class="card-label">Paid Bookings</div>
+                    <div class="card-value">3</div>
+                </div>
+                <div class="card-primary">
+                    <div class="card-label">Pending Payments</div>
+                    <div class="card-value">5</div>
+                </div>
+            </div>
+
+            <!-- Transactions Section -->
+            <div class="transactions-section">
+                <div class="section-header">
+                    <h3>August 2026 Transactions</h3>
+                    <span class="entry-badge">0 entries</span>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="transactions-table">
+                        <thead>
+                            <tr>
+                                <th>Booking</th>
+                                <th>Customer</th>
+                                <th>Section / Plot</th>
+                                <th>Total Price</th>
+                                <th>Amount Paid</th>
+                                <th>Balance</th>
+                                <th>Payment Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                                            <tr>
+                                    <td colspan="8">
+                                        <div class="empty-state">
+                                            <div class="empty-state-icon">📊</div>
+                                            <div>No sales recorded for August 2026 yet.</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transaction Details Modal -->
+    <div class="modal fade" id="transactionDetailsModal" tabindex="-1" aria-labelledby="transactionDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="transactionDetailsModalLabel">Transaction Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalContent">
+                    <div class="text-center py-4">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function updateReports() {
+            const month = document.getElementById('sales_month').value;
+            if (month) {
+                window.location.href = 'sales_reports.php?sales_month=' + encodeURIComponent(month);
+            }
+        }
+
+        function openTransactionDetails(bookingId) {
+            const modal = new bootstrap.Modal(document.getElementById('transactionDetailsModal'));
+            const modalContent = document.getElementById('modalContent');
+
+            // Fetch transaction details via AJAX
+            fetch('sales_reports.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'action=get_transaction_details&booking_id=' + bookingId
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const statusClass = 'status-' + data.payment_status.toLowerCase().replace(' ', '_');
+                    let html = `
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <div class="detail-label">Booking ID</div>
+                                <div class="detail-value">#${data.booking_id}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Status</div>
+                                <div class="detail-value"><span class="status-badge ${statusClass}">${data.payment_status}</span></div>
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <div class="detail-label">Customer Name</div>
+                                <div class="detail-value">${escapeHtml(data.customer_name)}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Email</div>
+                                <div class="detail-value">${escapeHtml(data.customer_email)}</div>
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <div class="detail-label">Contact Number</div>
+                                <div class="detail-value">${escapeHtml(data.contact_number)}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Booker Location</div>
+                                <div class="detail-value">${escapeHtml(data.booker_location)}</div>
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <div class="detail-label">Service Type</div>
+                                <div class="detail-value">${escapeHtml(data.service_type)}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Grave Location</div>
+                                <div class="detail-value">${escapeHtml(data.grave_location)}</div>
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <div class="detail-label">Section</div>
+                                <div class="detail-value">${escapeHtml(data.section)}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Plot</div>
+                                <div class="detail-value">${escapeHtml(data.plot)}</div>
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <div class="detail-label">Total Price</div>
+                                <div class="detail-value">₱${data.total_price}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Amount Paid</div>
+                                <div class="detail-value">₱${data.amount_paid}</div>
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <div class="detail-label">Balance</div>
+                                <div class="detail-value">₱${data.balance}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Payment Method</div>
+                                <div class="detail-value">${escapeHtml(data.payment_type)}</div>
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <div class="detail-label">Reference Number</div>
+                                <div class="detail-value">${escapeHtml(data.reference_number)}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Bank Name</div>
+                                <div class="detail-value">${escapeHtml(data.bank_name)}</div>
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <div class="detail-label">Payment Date</div>
+                                <div class="detail-value">${escapeHtml(data.payment_date)}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Booking Date</div>
+                                <div class="detail-value">${escapeHtml(data.booking_date)}</div>
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <div class="detail-label">Preferred Date</div>
+                                <div class="detail-value">${escapeHtml(data.preferred_date)}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Special Requests</div>
+                                <div class="detail-value">${escapeHtml(data.special_requests)}</div>
+                            </div>
+                        </div>
+                    `;
+
+                    if (data.proof_filename) {
+                        html += `
+                            <div class="detail-row">
+                                <div class="detail-item">
+                                    <div class="detail-label">Payment Proof</div>
+                                    <div class="detail-value">
+                                        <a href="uploads/${escapeHtml(data.proof_filename)}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                            View Proof
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    modalContent.innerHTML = html;
+                } else {
+                    modalContent.innerHTML = '<div class="alert alert-danger">Error loading transaction details.</div>';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                modalContent.innerHTML = '<div class="alert alert-danger">An error occurred while loading details.</div>';
+            });
+
+            modal.show();
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Allow Enter key to apply month filter
+        document.getElementById('sales_month').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                updateReports();
+            }
+        });
+    </script>
+</body>
+</html>

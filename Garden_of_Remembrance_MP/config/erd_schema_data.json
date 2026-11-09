@@ -1,0 +1,3621 @@
+{
+    "system_title": "Cemetery Management and Grave Mapping System",
+    "document_subtitle": "Entity Relationship Diagram (ERD) & Database Normalization",
+    "version": "4.0",
+    "last_updated": "2026-09-25",
+    "table_count": 26,
+    "entities": [
+        {
+            "name": "booking_payment_schedule",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "booking_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "installment_number",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "due_date",
+                    "key": "",
+                    "type": "DATE",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "amount_due",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "amount_paid",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "NO",
+                    "default": "0.00",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "status",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "NO",
+                    "default": "UNPAID",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "paid_at",
+                    "key": "",
+                    "type": "VARCHAR(30)",
+                    "null": "NO",
+                    "default": "-",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "payment_method",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "transaction_reference",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "gcash_reference_number",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "payment_receipt_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "0",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "created_at",
+                    "key": "",
+                    "type": "TIMESTAMP",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "updated_at",
+                    "key": "",
+                    "type": "TIMESTAMP",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "booking_plots",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "booking_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "plot_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "section",
+                    "key": "",
+                    "type": "VARCHAR(10)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "plot_x",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "plot_y",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "plot_number",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "lawn_type",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "YES",
+                    "default": "Regular",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "price_at_booking",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "NO",
+                    "default": "0.00",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "status",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "YES",
+                    "default": "reserved",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "created_at",
+                    "key": "",
+                    "type": "TIMESTAMP",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "booking_services",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "booking_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "service_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "service_name",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "price",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "NO",
+                    "default": "0.00",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "created_at",
+                    "key": "",
+                    "type": "TIMESTAMP",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "email_notifications",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "user_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "booking_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "recipient_email",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "type",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "subject",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "status",
+                    "key": "",
+                    "type": "ENUM('SENT','FAILED')",
+                    "null": "NO",
+                    "default": "sent",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "error_message",
+                    "key": "",
+                    "type": "TEXT",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "sent_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "created_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "guest_reservation_requests",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "user_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "plot_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "booking_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "request_type",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "NO",
+                    "default": "guest",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "full_name",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "email",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "contact_number",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "address",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "section",
+                    "key": "",
+                    "type": "VARCHAR(10)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "plot_x",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "plot_y",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "plot_code",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "purpose",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "NO",
+                    "default": "Future Memorial Lot",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "preferred_date",
+                    "key": "",
+                    "type": "DATE",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "notes",
+                    "key": "",
+                    "type": "TEXT",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "deceased_first_name",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "deceased_middle_name",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "deceased_last_name",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "deceased_suffix",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "deceased_bday",
+                    "key": "",
+                    "type": "DATE",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "deceased_date_died",
+                    "key": "",
+                    "type": "DATE",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "deceased_relationship",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "funeral_home",
+                    "key": "",
+                    "type": "VARCHAR(150)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "matched_deceased_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "deceased_full_name",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "payment_nonce",
+                    "key": "",
+                    "type": "VARCHAR(64)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "payment_status",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "NO",
+                    "default": "UNPAID",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "payment_amount",
+                    "key": "",
+                    "type": "DECIMAL(12,2)",
+                    "null": "NO",
+                    "default": "0.00",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "payment_date",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "gcash_reference",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "payment_receipt_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "proof_filename",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "payment_reference",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "status",
+                    "key": "",
+                    "type": "ENUM('PENDING','APPROVED','REJECTED','ACCOUNT CREATED','CANCELLED','EXPIRED')",
+                    "null": "NO",
+                    "default": "Pending",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "admin_notes",
+                    "key": "",
+                    "type": "TEXT",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "cancellation_reason",
+                    "key": "",
+                    "type": "TEXT",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "cancellation_requested",
+                    "key": "",
+                    "type": "TINYINT(1)",
+                    "null": "NO",
+                    "default": "0",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "cancellation_requested_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "account_creation_token_hash",
+                    "key": "",
+                    "type": "VARCHAR(64)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "token_expires_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "token_used_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "email_sent",
+                    "key": "",
+                    "type": "TINYINT(1)",
+                    "null": "NO",
+                    "default": "0",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "email_error",
+                    "key": "",
+                    "type": "TEXT",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "approved_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "approved_by",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "rejected_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "rejected_by",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "account_created_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "cancelled_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "cancelled_by",
+                    "key": "FK",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "payment_plan",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "NO",
+                    "default": "installment",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "payment_term",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "36",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "downpayment_amount",
+                    "key": "",
+                    "type": "DECIMAL(12,2)",
+                    "null": "NO",
+                    "default": "0.00",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "monthly_due",
+                    "key": "",
+                    "type": "DECIMAL(12,2)",
+                    "null": "NO",
+                    "default": "0.00",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "first_due_date",
+                    "key": "",
+                    "type": "DATE",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "created_at",
+                    "key": "",
+                    "type": "TIMESTAMP",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "updated_at",
+                    "key": "",
+                    "type": "TIMESTAMP",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "interment_packages",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "package_name",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "package_type",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "base_fee",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "description",
+                    "key": "",
+                    "type": "TEXT",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "inclusions",
+                    "key": "",
+                    "type": "LONGTEXT",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "active",
+                    "key": "",
+                    "type": "TINYINT(4)",
+                    "null": "YES",
+                    "default": "1",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "created_at",
+                    "key": "",
+                    "type": "TIMESTAMP",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "updated_at",
+                    "key": "",
+                    "type": "TIMESTAMP",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "lot_pricing",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "plot_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "payment_term",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "monthly_payment",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "total_price",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "discount_percentage",
+                    "key": "",
+                    "type": "DECIMAL(5,2)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "created_at",
+                    "key": "",
+                    "type": "TIMESTAMP",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "updated_at",
+                    "key": "",
+                    "type": "TIMESTAMP",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "notifications",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "user_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "booking_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "type",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "title",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "message",
+                    "key": "",
+                    "type": "TEXT",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "link",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "is_read",
+                    "key": "",
+                    "type": "TINYINT(1)",
+                    "null": "NO",
+                    "default": "0",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "created_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "read_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "payment_receipts",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "booking_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "user_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "payment_schedule_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "installment_number",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "amount_paid",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "NO",
+                    "default": "0.00",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "payment_method",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "YES",
+                    "default": "GCash",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "gcash_reference_number",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "transaction_reference",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "payment_date",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "payment_status",
+                    "key": "",
+                    "type": "VARCHAR(30)",
+                    "null": "YES",
+                    "default": "PAID",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "proof_filename",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "receipt_number",
+                    "key": "",
+                    "type": "VARCHAR(60)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "or_number",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "receipt_path",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "verified_by",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "recorded_by",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "recorded_by_name",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "verified_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "rejection_reason",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "notes",
+                    "key": "",
+                    "type": "TEXT",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "created_at",
+                    "key": "",
+                    "type": "TIMESTAMP",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "updated_at",
+                    "key": "",
+                    "type": "TIMESTAMP",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "payment_reminder_history",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "schedule_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "booking_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "user_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "reminder_type",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "due_date",
+                    "key": "",
+                    "type": "DATE",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "sent_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "payment_schedules",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "user_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "contract_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "installment_number",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "1",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "total_amount",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "NO",
+                    "default": "0.00",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "monthly_amount",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "NO",
+                    "default": "0.00",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "paid_amount",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "NO",
+                    "default": "0.00",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "remaining_balance",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "NO",
+                    "default": "0.00",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "term_months",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "12",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "status",
+                    "key": "",
+                    "type": "ENUM('PENDING','PAID','OVERDUE')",
+                    "null": "NO",
+                    "default": "pending",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "due_date",
+                    "key": "",
+                    "type": "DATE",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "user_email",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "paid_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "payment_method",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "transaction_reference",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "reminder_sent_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "created_at",
+                    "key": "",
+                    "type": "TIMESTAMP",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "updated_at",
+                    "key": "",
+                    "type": "TIMESTAMP",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "plot_deceased_mapping",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "plot_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "deceased_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "burial_date",
+                    "key": "",
+                    "type": "DATE",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "created_at",
+                    "key": "",
+                    "type": "TIMESTAMP",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "plot_transfer_requests",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "user_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "deceased_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "current_section",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "current_plot_x",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "current_plot_y",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "requested_section",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "requested_plot_x",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "requested_plot_y",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "reason",
+                    "key": "",
+                    "type": "TEXT",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "status",
+                    "key": "",
+                    "type": "ENUM('PENDING','APPROVED','REJECTED')",
+                    "null": "NO",
+                    "default": "pending",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "created_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "reviewed_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "reviewed_by",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "reservations",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "plot_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "user_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "reservation_date",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "expiry_date",
+                    "key": "",
+                    "type": "DATE",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "status",
+                    "key": "",
+                    "type": "ENUM('ACTIVE','EXPIRED','CONVERTED','CANCELLED')",
+                    "null": "YES",
+                    "default": "Active",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "notes",
+                    "key": "",
+                    "type": "TEXT",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "created_at",
+                    "key": "",
+                    "type": "TIMESTAMP",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "updated_at",
+                    "key": "",
+                    "type": "TIMESTAMP",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "sections",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "section_name",
+                    "key": "",
+                    "type": "VARCHAR(10)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "lawn_type",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "capacity",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "0",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "base_price",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "YES",
+                    "default": "0.00",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "services",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "service_name",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "price",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "tbl_booking_logs",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "booking_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "section",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "contact_number",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "booker_location",
+                    "key": "",
+                    "type": "TEXT",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "price",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "timestamp",
+                    "key": "",
+                    "type": "TIMESTAMP",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "tbl_bookings",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "service_type",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "grave_location",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "plot_type",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "section",
+                    "key": "",
+                    "type": "VARCHAR(10)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "plot",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "section_plot",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "plot_price",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "preferred_date",
+                    "key": "",
+                    "type": "DATE",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "contact_number",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "booker_location",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "special_requests",
+                    "key": "",
+                    "type": "TEXT",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "remarks",
+                    "key": "",
+                    "type": "TEXT",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "cancellation_reason",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "cancelled_by",
+                    "key": "FK",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "cancelled_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "payment_type",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "original_payment_method",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "amount_paid",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "YES",
+                    "default": "0.00",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "remaining_balance",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "YES",
+                    "default": "0.00",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "payment_status",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "YES",
+                    "default": "PENDING",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "reference_number",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "bank_name",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "payment_proof_filename",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "gcash_reference_number",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "payment_proof_uploaded_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "status",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "YES",
+                    "default": "pending",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "service_status",
+                    "key": "",
+                    "type": "VARCHAR(30)",
+                    "null": "NO",
+                    "default": "PENDING",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "service_completion_proof",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "service_completed_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "service_completed_by",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "is_guest_booking",
+                    "key": "",
+                    "type": "TINYINT(1)",
+                    "null": "YES",
+                    "default": "0",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "registration_token",
+                    "key": "",
+                    "type": "VARCHAR(64)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "token_expires_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "token_used",
+                    "key": "",
+                    "type": "TINYINT(1)",
+                    "null": "YES",
+                    "default": "0",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "token_used_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "user_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "plot_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "deceased_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "booking_type",
+                    "key": "",
+                    "type": "VARCHAR(40)",
+                    "null": "NO",
+                    "default": "general",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "created_at",
+                    "key": "",
+                    "type": "TIMESTAMP",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "customer_name",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "customer_email",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "full_name",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "deceased_name",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "email",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "purpose",
+                    "key": "",
+                    "type": "VARCHAR(30)",
+                    "null": "YES",
+                    "default": "reserve_grave",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "payment_plan",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "YES",
+                    "default": "full",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "payment_term",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "interment_fee",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "YES",
+                    "default": "0.00",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "service_price",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "YES",
+                    "default": "0.00",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "total_amount",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "YES",
+                    "default": "0.00",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "downpayment",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "YES",
+                    "default": "0.00",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "num_lots",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "1",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "area",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "YES",
+                    "default": "Lawn",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "source",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "YES",
+                    "default": "user",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "tbl_deceased",
+            "columns": [
+                {
+                    "name": "deceased_id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "user_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "relationship_to_account_holder",
+                    "key": "",
+                    "type": "VARCHAR(40)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "first_name",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "middle_name",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "last_name",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "suffix",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "bday",
+                    "key": "",
+                    "type": "DATE",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "born_in",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "contact_no",
+                    "key": "",
+                    "type": "VARCHAR(25)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "date_died",
+                    "key": "",
+                    "type": "DATE",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "interment_date",
+                    "key": "",
+                    "type": "DATE",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "funeral_service",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "section",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "plot_x",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "plot_y",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "added_by",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "edited_by",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "action",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "transfer_status",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "YES",
+                    "default": "ORIGINAL",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "booker_name",
+                    "key": "",
+                    "type": "VARCHAR(150)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "payment_plan",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "YES",
+                    "default": "Cash",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "payment_term",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "0",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "payment_status",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "YES",
+                    "default": "PAID",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "total_amount",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "YES",
+                    "default": "0.00",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "amount_paid",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "YES",
+                    "default": "0.00",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "monthly_due",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "YES",
+                    "default": "0.00",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "tbl_deceased_transfers",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "deceased_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "deceased_name",
+                    "key": "",
+                    "type": "VARCHAR(150)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "original_section",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "original_plot_x",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "original_plot_y",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "original_interment_date",
+                    "key": "",
+                    "type": "DATE",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "destination_section",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "destination_plot_x",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "destination_plot_y",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "destination_type",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "YES",
+                    "default": "NEW_PLOT",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "destination_details",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "transfer_date",
+                    "key": "",
+                    "type": "DATE",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "reason",
+                    "key": "",
+                    "type": "TEXT",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "eligibility_at_transfer",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "years_since_interment",
+                    "key": "",
+                    "type": "DECIMAL(4,1)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "recorded_by_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "recorded_by_name",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "created_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "tbl_logs",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "action",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "details",
+                    "key": "",
+                    "type": "TEXT",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "timestamp",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "user_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                }
+            ]
+        },
+        {
+            "name": "tbl_plot_owners",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "section",
+                    "key": "",
+                    "type": "VARCHAR(10)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "plot_x",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "plot_y",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "reserved_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "NO",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "reserved_by",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "active",
+                    "key": "",
+                    "type": "TINYINT(1)",
+                    "null": "NO",
+                    "default": "1",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "first_name",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "middle_name",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "last_name",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "suffix",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "bday",
+                    "key": "",
+                    "type": "DATE",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "phone_no",
+                    "key": "",
+                    "type": "VARCHAR(15)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "address",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "owner_name",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "tbl_plots",
+            "columns": [
+                {
+                    "name": "plot_id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "section",
+                    "key": "",
+                    "type": "VARCHAR(10)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "row",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "plot_number",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "plot_x",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "plot_y",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "lawn_type",
+                    "key": "",
+                    "type": "VARCHAR(100)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "price",
+                    "key": "",
+                    "type": "DECIMAL(10,2)",
+                    "null": "YES",
+                    "default": "0.00",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "latitude",
+                    "key": "",
+                    "type": "DECIMAL(10,8)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "longitude",
+                    "key": "",
+                    "type": "DECIMAL(11,8)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "coordinate_source",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "YES",
+                    "default": "calculated",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "coordinate_accuracy",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "YES",
+                    "default": "approximate (calibrated layout)",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "coordinate_updated_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "status",
+                    "key": "",
+                    "type": "ENUM('AVAILABLE','RESERVED','OCCUPIED','PURCHASED')",
+                    "null": "YES",
+                    "default": "available",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "tbl_recent_clicks",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "user_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "section",
+                    "key": "",
+                    "type": "VARCHAR(10)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "plot_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "plot_code",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "plot_x",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "plot_y",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "deceased_name",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "details",
+                    "key": "",
+                    "type": "TEXT",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "created_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "tbl_user",
+            "columns": [
+                {
+                    "name": "user_id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "role",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "first_name",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "middle_name",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "last_name",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "suffix",
+                    "key": "",
+                    "type": "VARCHAR(50)",
+                    "null": "YES",
+                    "default": "",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "birthday",
+                    "key": "",
+                    "type": "DATE",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "gender",
+                    "key": "",
+                    "type": "VARCHAR(10)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "email",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "password",
+                    "key": "",
+                    "type": "VARCHAR(250)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "phone_no",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "YES",
+                    "default": "",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "profile_picture",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "account_number",
+                    "key": "",
+                    "type": "VARCHAR(20)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "email_verified",
+                    "key": "",
+                    "type": "TINYINT(1)",
+                    "null": "YES",
+                    "default": "0",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "verification_token",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "verification_otp",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "otp_expiry",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "reset_otp",
+                    "key": "",
+                    "type": "VARCHAR(10)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "reset_otp_expiry",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "verification_expires",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "reset_token",
+                    "key": "",
+                    "type": "VARCHAR(128)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "reset_expires",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "verification_attempts",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "0",
+                    "desc": "Attribute"
+                }
+            ]
+        },
+        {
+            "name": "user_plot_ownership",
+            "columns": [
+                {
+                    "name": "id",
+                    "key": "PK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Primary key"
+                },
+                {
+                    "name": "user_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "section",
+                    "key": "",
+                    "type": "VARCHAR(10)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "plot_x",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "plot_y",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "NO",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "plot_id",
+                    "key": "FK",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Foreign key"
+                },
+                {
+                    "name": "ownership_status",
+                    "key": "",
+                    "type": "ENUM('OWNED','RESERVED','PURCHASED')",
+                    "null": "NO",
+                    "default": "OWNED",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "verification_status",
+                    "key": "",
+                    "type": "ENUM('PENDING','VERIFIED','REJECTED')",
+                    "null": "NO",
+                    "default": "PENDING",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "claim_source",
+                    "key": "",
+                    "type": "ENUM('REGISTRATION','USER_DASHBOARD','BOOKING','ADMIN_ASSIGNED','ADMIN_MANUAL')",
+                    "null": "NO",
+                    "default": "REGISTRATION",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "deceased_reference",
+                    "key": "",
+                    "type": "VARCHAR(255)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "notes",
+                    "key": "",
+                    "type": "TEXT",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "admin_notes",
+                    "key": "",
+                    "type": "TEXT",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "verified_by",
+                    "key": "",
+                    "type": "INT(11)",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "verified_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "None",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "created_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                },
+                {
+                    "name": "updated_at",
+                    "key": "",
+                    "type": "DATETIME",
+                    "null": "YES",
+                    "default": "current_timestamp()",
+                    "desc": "Attribute"
+                }
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "from": "tbl_user",
+            "to": "tbl_bookings",
+            "type": "1 : 0..*",
+            "fk": "user_id",
+            "desc": "One user places multiple contract bookings"
+        },
+        {
+            "from": "tbl_user",
+            "to": "tbl_deceased",
+            "type": "1 : 0..*",
+            "fk": "user_id",
+            "desc": "One user registers multiple deceased relatives"
+        },
+        {
+            "from": "tbl_user",
+            "to": "guest_reservation_requests",
+            "type": "1 : 0..*",
+            "fk": "user_id",
+            "desc": "One user submits multiple guest reservation inquiries"
+        },
+        {
+            "from": "tbl_user",
+            "to": "user_plot_ownership",
+            "type": "1 : 0..*",
+            "fk": "user_id",
+            "desc": "One user holds ownership records for multiple plots"
+        },
+        {
+            "from": "tbl_user",
+            "to": "tbl_plot_owners",
+            "type": "1 : 0..*",
+            "fk": "reserved_by",
+            "desc": "One user\/admin reserves multiple plots for deed owners"
+        },
+        {
+            "from": "tbl_user",
+            "to": "plot_transfer_requests",
+            "type": "1 : 0..*",
+            "fk": "user_id",
+            "desc": "One user files multiple plot transfer requests"
+        },
+        {
+            "from": "tbl_user",
+            "to": "payment_receipts",
+            "type": "1 : 0..*",
+            "fk": "user_id",
+            "desc": "One user receives multiple official payment receipts"
+        },
+        {
+            "from": "tbl_user",
+            "to": "payment_schedules",
+            "type": "1 : 0..*",
+            "fk": "user_id",
+            "desc": "One user has multiple contract payment schedules"
+        },
+        {
+            "from": "tbl_user",
+            "to": "payment_reminder_history",
+            "type": "1 : 0..*",
+            "fk": "user_id",
+            "desc": "One user receives multiple automated payment reminder logs"
+        },
+        {
+            "from": "tbl_user",
+            "to": "tbl_logs",
+            "type": "1 : 0..*",
+            "fk": "user_id",
+            "desc": "One user performs actions recorded in system audit logs"
+        },
+        {
+            "from": "tbl_user",
+            "to": "notifications",
+            "type": "1 : 0..*",
+            "fk": "user_id",
+            "desc": "One user receives multiple in-system notification notices"
+        },
+        {
+            "from": "tbl_user",
+            "to": "email_notifications",
+            "type": "1 : 0..*",
+            "fk": "user_id",
+            "desc": "One user receives multiple transactional email logs"
+        },
+        {
+            "from": "tbl_user",
+            "to": "tbl_recent_clicks",
+            "type": "1 : 0..*",
+            "fk": "user_id",
+            "desc": "One user generates multiple interactive map click logs"
+        },
+        {
+            "from": "tbl_user",
+            "to": "reservations",
+            "type": "1 : 0..*",
+            "fk": "user_id",
+            "desc": "One user creates multiple direct reservations"
+        },
+        {
+            "from": "tbl_plots",
+            "to": "tbl_bookings",
+            "type": "1 : 0..*",
+            "fk": "plot_id",
+            "desc": "One plot is referenced across multiple service\/burial bookings"
+        },
+        {
+            "from": "tbl_plots",
+            "to": "booking_plots",
+            "type": "1 : 0..*",
+            "fk": "plot_id",
+            "desc": "One plot is mapped to multiple contract booking items"
+        },
+        {
+            "from": "tbl_plots",
+            "to": "plot_deceased_mapping",
+            "type": "1 : 0..*",
+            "fk": "plot_id",
+            "desc": "One plot accommodates up to 4 deceased occupants"
+        },
+        {
+            "from": "tbl_plots",
+            "to": "user_plot_ownership",
+            "type": "1 : 0..*",
+            "fk": "plot_id",
+            "desc": "One plot holds deed verification and ownership records"
+        },
+        {
+            "from": "tbl_plots",
+            "to": "guest_reservation_requests",
+            "type": "1 : 0..*",
+            "fk": "plot_id",
+            "desc": "One plot is targeted in multiple reservation inquiries"
+        },
+        {
+            "from": "tbl_plots",
+            "to": "reservations",
+            "type": "1 : 0..*",
+            "fk": "plot_id",
+            "desc": "One plot has active or past reservation entries"
+        },
+        {
+            "from": "tbl_plots",
+            "to": "lot_pricing",
+            "type": "1 : 0..*",
+            "fk": "plot_id",
+            "desc": "One plot references specific installment pricing terms"
+        },
+        {
+            "from": "tbl_plots",
+            "to": "tbl_recent_clicks",
+            "type": "1 : 0..*",
+            "fk": "plot_id",
+            "desc": "One plot is selected in multiple visitor click logs"
+        },
+        {
+            "from": "tbl_bookings",
+            "to": "booking_payment_schedule",
+            "type": "1 : 0..*",
+            "fk": "booking_id",
+            "desc": "One booking contains multiple installment payment schedule rows"
+        },
+        {
+            "from": "tbl_bookings",
+            "to": "booking_plots",
+            "type": "1 : 0..*",
+            "fk": "booking_id",
+            "desc": "One booking contract encompasses multiple lot plots"
+        },
+        {
+            "from": "tbl_bookings",
+            "to": "booking_services",
+            "type": "1 : 0..*",
+            "fk": "booking_id",
+            "desc": "One booking includes multiple auxiliary cemetery services"
+        },
+        {
+            "from": "tbl_bookings",
+            "to": "tbl_booking_logs",
+            "type": "1 : 0..*",
+            "fk": "booking_id",
+            "desc": "One booking generates multiple administrative status logs"
+        },
+        {
+            "from": "tbl_bookings",
+            "to": "payment_receipts",
+            "type": "1 : 0..*",
+            "fk": "booking_id",
+            "desc": "One booking is validated by multiple payment receipts"
+        },
+        {
+            "from": "tbl_bookings",
+            "to": "payment_reminder_history",
+            "type": "1 : 0..*",
+            "fk": "booking_id",
+            "desc": "One booking accrues multiple billing reminder notices"
+        },
+        {
+            "from": "tbl_bookings",
+            "to": "notifications",
+            "type": "1 : 0..*",
+            "fk": "booking_id",
+            "desc": "One booking triggers multiple client notification alerts"
+        },
+        {
+            "from": "tbl_bookings",
+            "to": "email_notifications",
+            "type": "1 : 0..*",
+            "fk": "booking_id",
+            "desc": "One booking triggers multiple email transmission logs"
+        },
+        {
+            "from": "tbl_deceased",
+            "to": "tbl_deceased_transfers",
+            "type": "1 : 0..*",
+            "fk": "deceased_id",
+            "desc": "One deceased individual can have multiple exhumation transfer logs"
+        },
+        {
+            "from": "tbl_deceased",
+            "to": "plot_transfer_requests",
+            "type": "1 : 0..*",
+            "fk": "deceased_id",
+            "desc": "One deceased record is referenced in transfer requests"
+        },
+        {
+            "from": "tbl_deceased",
+            "to": "plot_deceased_mapping",
+            "type": "1 : 0..*",
+            "fk": "deceased_id",
+            "desc": "One deceased individual is associated with plot mapping records"
+        },
+        {
+            "from": "tbl_deceased",
+            "to": "tbl_bookings",
+            "type": "1 : 0..*",
+            "fk": "deceased_id",
+            "desc": "One deceased individual is serviced in burial bookings"
+        },
+        {
+            "from": "services",
+            "to": "booking_services",
+            "type": "1 : 0..*",
+            "fk": "service_id",
+            "desc": "One catalog service is ordered across multiple booking items"
+        },
+        {
+            "from": "booking_payment_schedule",
+            "to": "payment_reminder_history",
+            "type": "1 : 0..*",
+            "fk": "schedule_id",
+            "desc": "One payment schedule installment has multiple reminder logs"
+        },
+        {
+            "from": "payment_receipts",
+            "to": "booking_payment_schedule",
+            "type": "1 : 0..*",
+            "fk": "payment_receipt_id",
+            "desc": "One official receipt confirms multiple payment schedule installments"
+        }
+    ],
+    "normalization": {
+        "1nf": "Every relation has atomic, non-decomposable columns. Coordinates (plot_x, plot_y), timestamps, currency amounts, and separate user profile fields contain single values without repeating groups or multi-valued attributes.",
+        "2nf": "All non-key attributes are fully functionally dependent on the entire primary key (surrogate ID). There are no partial dependencies on composite keys across all 26 entities.",
+        "3nf": "All transitive dependencies are eliminated. Payment terms, service definitions, section coordinates, reminders, transfer audits, and booking schedules are isolated into dedicated normalized relational tables."
+    }
+}

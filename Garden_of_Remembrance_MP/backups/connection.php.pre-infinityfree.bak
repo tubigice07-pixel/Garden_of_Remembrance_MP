@@ -1,0 +1,53 @@
+<?php
+$servername = "sql109.infinityfree.com";
+$username = "if0_42806961";
+$password = "Shumi2231";
+$dbname = "if0_42806961_garden";
+
+$mysqli_report_mode = MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT;
+mysqli_report($mysqli_report_mode);
+
+try {
+    $connection_options = mysqli_init();
+    $connection_options->options(MYSQLI_OPT_CONNECT_TIMEOUT, 5);
+    $connection_options->real_connect($servername, $username, $password, $dbname);
+    $conn = $connection_options;
+    $conn->set_charset('utf8mb4');
+} catch (mysqli_sql_exception $exception) {
+    http_response_code(503);
+    error_log('Database connection failed: ' . $exception->getMessage());
+    exit('Database temporarily unavailable. Please try again shortly.');
+}
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if (!function_exists('format_plot_number')) {
+    function format_plot_number($plot, $section = '') {
+        if (empty($plot) && empty($section)) return '—';
+        $raw = trim((string)$plot);
+        $sec = strtoupper(trim((string)$section));
+
+        // Format 1: 6-digit padded like "D-006002" or "006002"
+        if (preg_match('/^(?:([A-Za-z0-9]+)-)?(\d{3})(\d{3})$/', $raw, $m)) {
+            $s = strtoupper(!empty($m[1]) ? $m[1] : ($sec ?: 'A'));
+            $x = (int)$m[2];
+            $y = (int)$m[3];
+            return $s . '- ' . $x . ',' . $y;
+        }
+
+        // Format 2: hyphen/space/comma separated like "D-6-2", "6-2", "6,2", "D- 6,2"
+        if (preg_match('/^(?:([A-Za-z0-9]+)[-_\s]+)?(\d+)[-_,\s]+(\d+)$/', $raw, $m)) {
+            $s = strtoupper(!empty($m[1]) ? $m[1] : ($sec ?: 'A'));
+            $x = (int)$m[2];
+            $y = (int)$m[3];
+            return $s . '- ' . $x . ',' . $y;
+        }
+
+        if (!empty($sec) && !empty($raw)) {
+            return $sec . '- ' . $raw;
+        }
+        return $raw ?: ($sec ?: '—');
+    }
+}
+?>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GCash Receipt — Demo Merchant</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="receipt-bg">
+    <div class="receipt-card">
+      <div class="receipt-top">
+        <img src="assets/gcash-logo.png" alt="GCash logo" class="logo-img" style="height:36px">
+        <div class="check-circle" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.285 6.708l-11.4 11.4-5.17-5.171 1.414-1.414 3.756 3.757 9.986-9.986z"/></svg>
+        </div>
+        <div class="receipt-title">Payment Sent</div>
+        <div class="receipt-sub">You have successfully sent the payment</div>
+      </div>
+
+      <div class="receipt-content">
+        <div class="receipt-row"><div><div class="meta">Recipient</div><div class="value" id="recName">Demo Merchant</div></div><div class="meta">Mobile</div><div class="value" id="recMobile">+63 912 345 6789</div></div>
+        <div class="receipt-row"><div class="meta">Amount</div><div class="receipt-amount" id="recAmount">PHP 100.00</div></div>
+        <div class="receipt-row"><div class="meta">Total Amount Sent</div><div class="receipt-amount" id="recTotal">PHP 100.00</div></div>
+        <div class="receipt-row"><div class="meta">Reference Number</div><div class="value" id="recRef">-</div></div>
+        <div class="receipt-row"><div class="meta">Date & Time</div><div class="value" id="recDate">-</div></div>
+      </div>
+
+      <div class="actions">
+        <button id="downloadBtn" class="btn-outline">Download Receipt</button>
+        <button id="shareBtn" class="btn-primary">Share Receipt</button>
+        <button id="exitBtn" class="btn-primary" style="background:#fff;color:#0b3c8a;border:1px solid rgba(11,60,138,0.08);">Done</button>
+      </div>
+      <div class="footer-note">Receipt generated from transaction data stored in sessionStorage.</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
